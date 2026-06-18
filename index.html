@@ -500,6 +500,8 @@ Starts From</span> <span
 			<div class="mob-form d-sm-block d-md-none d-lg-none">
 				<span class="d-block form-heading font-weight-bold">Book a Free Pick</span>
 				<form name="price-popup" role="form" class="form-side" action="contact.php" method="post">
+					<input type="hidden" name="captcha_result" class="captchaResult3">
+
 					<div class="form-group"><input type="text" id="name" name="name" pattern="[a-zA-Z ]+"
 							class="form-control rounded-0 micro-form-field" required placeholder="Name" /></div>
 					<div class="form-group">
@@ -525,6 +527,8 @@ Starts From</span> <span
 					<button type="submit" name="enq_formBtn" class="btn btn-info micro-form-btn effetMoveGradient"
 						value="proceed">Pre-Register Now</button>
 				</form>
+				
+
 			</div>
 		</div>
 		<section class="section shadow-sm lazyload" id="overview">
@@ -1050,7 +1054,7 @@ Prospective buyers have a variety of spacious layouts to choose from, including 
 					<hr>
 
 					<form name="price-popup" role="form" class="form-side" action="contact.php" method="post">
-						<input type="hidden" name="captcha_result" class="captchaResult">
+						
 								
 						<div class="form-group"><input type="text" name="name" pattern="[a-zA-Z ]+"
 								class="form-control rounded-0 micro-form-field" id="name1" required
@@ -1062,7 +1066,7 @@ Prospective buyers have a variety of spacious layouts to choose from, including 
 						<div class="form-group"><input type="email" id="email1" name="email"
 								class="form-control rounded-0 micro-form-field" required placeholder="E-Mail Address" />
 						</div>
-						<div style="display: flex; align-items: center; gap: 8px;">
+						<div style="display: flex; align-items: center; gap: 8px; padding: 5px 10px;">
   <input 
     type="checkbox" 
     name="consent" 
@@ -1075,82 +1079,15 @@ Prospective buyers have a variety of spacious layouts to choose from, including 
     I agree to the Terms & Conditions and Privacy Policy.
   </label>
 </div>
-						<button type="button" name="enq_formBtn" class="btn btn-info micro-form-btn effetMoveGradient"
-						onclick="openCaptcha1(this)" value="proceed">Submit</button>
+						<button type="submit" name="enq_formBtn" class="btn btn-info micro-form-btn effetMoveGradient"
+						value="proceed">Submit</button>
 					</form>
-					<div id="captchaModal1" style="display:none; position:fixed; z-index:99999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);">
 
-  <div style="background:#fff; padding:20px; width:300px; margin:10% auto; border-radius:8px; text-align:center;">
-    
-    <h4 style="color: #000;">Verify You Are Human</h4>
-    
-    <p id="captchaQuestion1" style="color: #000;"></p>
-    
-    <input type="number" id="captchaInput1" class="form-control" placeholder="Enter answer">
-    
-    <br>
-    
-    <button onclick="verifyCaptcha1()" class="btn btn-success">Verify & Submit</button>
-    <button onclick="closeCaptcha1()" class="btn btn-danger">Cancel</button>
-
-  </div>
-
-</div>
 				</div>
 			</div>
 		</section>
-		<script>
-let form1Ref = null;
-let correctAnswer1;
-
-// Open captcha for Form 1
-function openCaptcha1(button) {
-
-    let form = button.closest("form");
-
-    // Validate form first
-    if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-    }
-
-    form1Ref = form;
-
-    // Generate captcha
-    let a = Math.floor(Math.random() * 10) + 1;
-    let b = Math.floor(Math.random() * 10) + 1;
-    correctAnswer1 = a + b;
-
-    document.getElementById("captchaQuestion1").innerText = a + " + " + b + " = ?";
-    document.getElementById("captchaInput1").value = "";
-
-    document.getElementById("captchaModal1").style.display = "block";
-}
-
-// Close captcha
-function closeCaptcha1() {
-    document.getElementById("captchaModal1").style.display = "none";
-}
-
-// Verify captcha
-function verifyCaptcha1() {
-    let userAnswer = document.getElementById("captchaInput1").value;
-
-    if (userAnswer == correctAnswer1) {
-
-        // Store value (optional backend use)
-        let hiddenField = form1Ref.querySelector(".captchaResult");
-        if (hiddenField) {
-            hiddenField.value = correctAnswer1;
-        }
-
-        form1Ref.submit();
-
-    } else {
-        alert("Wrong answer! Try again.");
-    }
-}
-</script>
+		
+		
 
 		<ul class="mob-action nav nav-fill d-sm-block d-lg-none">
 			<li class="nav-item" onclick="javascript:location.href='tel:+918050563570'"><span
@@ -1187,7 +1124,7 @@ function verifyCaptcha1() {
 										class="text-danger">Best Offers!!</span></span>
 								<form name="price-popup" role="form" class="form-side" action="contact.php"
 									method="post">
-									<input type="hidden" name="captcha_result" class="captchaResult">
+									<!-- <input type="hidden" name="captcha_result" class="captchaResult"> -->
 									<div class="form-group"><input type="text" name="name" pattern="[a-zA-Z ]+"
 											class="form-control rounded-0 micro-form-field" id="name2" required
 											placeholder="Name" /></div>
@@ -1200,7 +1137,7 @@ function verifyCaptcha1() {
 											class="form-control rounded-0 micro-form-field" required
 											placeholder="E-Mail Address" />
 									</div> 
-									<div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+									<div class="form-group" style="display: flex; align-items: center; gap: 8px; padding: 5px 10px;">
   <input 
     type="checkbox" 
     name="consent" 
@@ -1214,87 +1151,13 @@ function verifyCaptcha1() {
   </label>
 </div>
 <br>
-									<button type="button" name="enq_formBtn" onclick="openCaptchaPopup(this); return false;"
+									<button type="submit" name="enq_formBtn"
 										class="btn btn-info micro-form-btn effetMoveGradient"
 										value="proceed">Submit</button>
 								</form> <br>
 
-								<div id="captchaModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999999;">
+							
 
-  <div style="background:#fff; padding:20px; width:300px; margin:10% auto; border-radius:8px; text-align:center;">
-    
-    <h4>Verify You Are Human</h4>
-    
-    <p id="captchaQuestion"></p>
-    
-    <input type="number" id="captchaInput" class="form-control" placeholder="Enter answer">
-    
-    <br>
-    
-    <button onclick="verifyCaptcha()" class="btn btn-success">Verify & Submit</button>
-    <button onclick="closeCaptcha()" class="btn btn-danger">Cancel</button>
-
-  </div>
-
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    let num1, num2, correctAnswer;
-    let currentForm = null;
-
-    // Open captcha only if form is valid
-    window.openCaptchaPopup = function(button) {
-//   console.log("Hii");
-        let form = button.closest("form");
-// console.log(form)
-        // ✅ Check form validity first
-        if (!form.checkValidity()) {
-			// console.log("validity");
-            form.reportValidity(); // show HTML validation
-            return;
-        }
-
-        currentForm = form;
-// console.log(currentForm);
-        // Generate captcha
-        num1 = Math.floor(Math.random() * 10) + 1;
-        num2 = Math.floor(Math.random() * 10) + 1;
-        correctAnswer = num1 + num2;
-
-        document.getElementById("captchaQuestion").innerText =
-            num1 + " + " + num2 + " = ?";
-
-        document.getElementById("captchaInput").value = "";
-
-        document.getElementById("captchaModal").style.display = "block";
-    };
-
-    window.closeCaptcha = function() {
-        document.getElementById("captchaModal").style.display = "none";
-    };
-
-    window.verifyCaptcha = function() {
-        let userAnswer = document.getElementById("captchaInput").value;
-
-        if (userAnswer == correctAnswer) {
-
-            // ✅ Store answer (for backend validation if needed)
-            let hiddenField = currentForm.querySelector(".captchaResult");
-            if (hiddenField) {
-                hiddenField.value = correctAnswer;
-            }
-
-            currentForm.submit(); // submit correct form
-
-        } else {
-            alert("Wrong answer! Try again.");
-        }
-    };
-
-});
-</script>
 
 							</div>
 						</div>
@@ -1478,28 +1341,7 @@ Corporate Office: Godrej Properties: Unit No. 5C, 5th Floor, Godrej One, Pirojsh
     <!-- DISCLAIMER -->
     <p class="disclaimer-text">
 
-      Disclaimer: The information provided on this website is intended
-      exclusively for informational purposes and should not be construed
-      as an offer of services. This site is managed by a RERA authorized
-      affiliate partner / real estate agent for multiple real estate
-      developers / property owners. Property Finder LLP registered under
-      Karnataka RERA. The pricing information presented on this website is subject
-      to alteration without advance notification, and the assurance of
-      property availability cannot be guaranteed. The images showcased on
-      this website are for representational purposes only and may not
-      accurately reflect the actual properties. We may share your data with
-      Maharashtra Real Estate Regulatory Authority (RERA) registered
-      developers for further processing as necessary.
-
-      Additionally, we may send updates and information to the mobile number
-      or email address registered with us. All rights reserved. The content,
-      design, and information on this website are protected by copyright and
-      other intellectual property rights. Any unauthorized use or reproduction
-      of the content may violate applicable laws. For accurate and up-to-date
-      information regarding services, pricing, availability, and any other
-      details, it is recommended to contact us directly through the provided
-      contact information on this website. Thank you for visiting our website.
-
+      Disclaimer: This website is owned and operated by Property First LLP (RERA Registration No. PRM/KA/RERA/1251/446/AG/171201/001619), an authorized channel partner of Godrej Properties, on behalf of Supreme Enterprises. The information, images, specifications, and details provided on this website are for representational and informational purposes only and are subject to change without prior notice. Prospective buyers are advised to verify all project details, specifications, approvals, and availability directly with the developer before making any purchase decision.
     </p>
 
     <!-- LINKS -->
